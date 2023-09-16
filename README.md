@@ -1,6 +1,6 @@
 # Hugo Theme - Gists
 
-A minimalist gists blog theme for Hugo, inspired by Github.
+A minimalist gists blog theme for Hugo, inspired by Github Gists.
 
 ## Init hugo site
 
