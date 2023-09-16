@@ -1,0 +1,53 @@
+{{ define "posts" }}
+  <div class="position-relative">
+    <div class="pt-4 pt-md-0">
+      <ul class="ps-0">
+        {{ range .Paginator.Pages }}
+        <li class="col-12 d-flex w-100  mb-4 pb-4 border-bottom border-light-subtle">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block fs-6 fw-bold">
+              <a class="link-primary link-underline link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2-hover" href="{{ .Permalink }}">{{ .Title }}</a>
+            </div>
+
+            <div class="col-12 d-inline-block text-secondary">
+              <p class="fw-light">{{ .Summary | safeHTML }}</p>
+            </div>
+
+            <div>
+              <span class="fw-lighter text-dark-emphasis">
+                created
+                <relative-time datetime="{{ .PublishDate.Format " Mon, 02 Jan 2006 15:04:05 -0700" }}" 
+                  title="{{ .PublishDate.Format " Mon, 02 Jan 2006 15:04:05 -0700" }}">
+                  {{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}
+                </relative-time>
+              </span>
+              <span class="ps-2" >
+                {{ with .Params.tags }}
+                  {{ range $tag := (first 5 .) }}
+                    <a class="badge text-bg-secondary text-dark fw-normal bg-opacity-25 pb-1 link-underline link-underline-opacity-0 link-underline-opacity-100-hover" href="{{ relURL (print "tags/" $tag) }}/"> {{$tag}}</a>
+                  {{ end }}
+                {{ end }}
+              </span>
+            </div>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+      <div class="text-center my-4">
+        <div class="btn-group">
+          {{ if .Paginator.HasPrev }}
+          <a class="btn btn-outline-primary text-decoration-none" href="{{ .Paginator.Prev.URL }}">Previous</a>
+          {{ else }}
+          <a class="btn btn-outline-primary disabled">Previous</a>
+          {{ end }}
+
+          {{ if .Paginator.HasNext }}
+          <a class="btn btn-outline-primary px-4 text-decoration-none" href="{{ .Paginator.Next.URL }}">Next</a>
+          {{ else }}
+          <a class="btn btn-outline-primary disabled">Next</a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

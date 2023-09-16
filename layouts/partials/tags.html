@@ -1,0 +1,63 @@
+{{ define "tags" }}
+  <div class="text-secondary pt-4 pt-md-0">
+    {{range $taxonomy := .Site.Taxonomies}}
+      <div>
+        {{range $key, $value := $taxonomy }}
+          <a class="badge text-bg-secondary text-dark fw-normal bg-opacity-25 p-2 m-1 link-underline link-underline-opacity-0 link-underline-opacity-100-hover" href="{{ relURL (print "tags/" $key) }}/"> {{$key}}</a>
+        {{end}}
+      </div> 
+    {{end}}
+  </div>
+
+  {{ if .Params.title }}
+  <div class="border-bottom border-gray-light py-3">
+    <div>
+      ( <strong>{{ len .Pages }}</strong>
+      results
+      for <strong>{{ .Params.title }}</strong> )
+      <a class="btn btn-sm btn-outline-primary text-decoration-none" href="{{ .Site.BaseURL }}/tags/"> Clear filter</a>
+    </div>
+  </div>
+
+  <div class="position-relative">
+      <ul class="ps-0">
+        {{ range .Paginator.Pages }}
+        <li class="col-12 d-flex w-100 py-4 border-bottom border-light-subtle">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1 fs-6 fw-bold">
+              <a class="link-primary link-underline link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2-hover" href="{{ .Permalink }}">{{ .Title }}</a>
+            </div>
+            <div>
+              <div class="col-12 d-inline-block text-secondary pr-4">
+                <p class="fw-light fst-normal">{{ .Summary | safeHTML }}</p>
+              </div>
+            </div>
+            <div class="text-secondary">
+              <p class="fw-lighter text-dark-emphasis"><relative-time datetime="{{ .PublishDate.Format " Mon, 02 Jan 2006 15:04:05 -0700" }}"
+                title="{{ .PublishDate.Format " Mon, 02 Jan 2006 15:04:05 -0700" }}">
+                {{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}
+              </relative-time></p>
+            </div>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+      <div class="text-center my-4">
+        <div class="btn-group">
+          {{ if .Paginator.HasPrev }}
+          <a class="btn btn-outline-primary text-decoration-none" href="{{ .Paginator.Prev.URL }}">Previous</a>
+          {{ else }}
+          <a class="btn btn-outline-primary disabled">Previous</a>
+          {{ end }}
+
+          {{ if .Paginator.HasNext }}
+          <a class="btn btn-outline-primary text-decoration-none px-4" href="{{ .Paginator.Next.URL }}">Next</a>
+          {{ else }}
+          <a class="btn btn-outline-primary disabled">Next</a>
+          {{ end }}
+        </div>
+      </div>
+  </div>
+
+{{ end }}
+{{end}}

@@ -1,0 +1,28 @@
+{{ define "pinned" }}
+{{ $section := where .Site.RegularPages "Params.pin" true  }}
+  <ol class="d-flex flex-wrap mt-4 ps-0">
+    {{ range (first 6 $section) }}
+      <li class="col-12 col-md-6 col-lg-6 d-flex">
+        <div class="border rounded bg-transparent d-flex flex-column p-3 pb-0 me-3 mb-3 w-100">
+          <div class="fs-6 fw-bold">
+            <a class="link-primary link-underline link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2-hover" href="{{ .Permalink }}">
+              <span title="{{ .Title }}">{{ .Title }}</span>
+            </a>
+          </div>
+
+          <div class="text-secondary mt-1 fs-6">
+            <p class="fw-light">{{ .Summary | safeHTML }}</p>
+          </div>
+
+          <p class="">
+            {{ with .Params.tags }}
+              {{ range $tag := (first 5 .) }}  
+                <a class="badge text-bg-secondary text-dark-emphasis fw-normal bg-opacity-25 pb-1 link-underline link-underline-opacity-0 link-underline-opacity-100-hover" href="{{ relURL (print "tags/" $tag) }}/">{{$tag}}</a>
+              {{ end }}
+            {{ end }}
+          </p>
+        </div>
+      </li>
+    {{ end }}
+  </ol>
+{{ end }}

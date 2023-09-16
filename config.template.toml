@@ -1,0 +1,17 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en-US"
+title = "Gists Hugo theme"
+theme = "gists"
+pygmentsCodeFences = true
+paginate = 10
+
+[params]
+  author = "helloworld"
+  resume = "My technical gists."
+  description = "Hello world"
+  email = "hello@world.com"
+  github = "helloworld"
+  mastodon = "@hello@world.org"
+  keywords = "blog, minimal, technical"
+  rss = true
+  favicon = "/images/avatar.png"
