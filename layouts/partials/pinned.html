@@ -10,17 +10,29 @@
             </a>
           </div>
 
-          <div class="text-secondary mt-1 fs-6">
+          <div class="text-secondary mt-1 fs-6  flex-fill">
             <p class="fw-light">{{ .Summary | safeHTML }}</p>
           </div>
 
-          <p class="">
-            {{ with .Params.tags }}
-              {{ range $tag := (first 5 .) }}  
-                <a class="badge text-bg-secondary text-dark-emphasis fw-normal bg-opacity-25 pb-1 link-underline link-underline-opacity-0 link-underline-opacity-100-hover" href="{{ relURL (print "tags/" $tag) }}/">{{$tag}}</a>
+          <div class="mb-2">
+            
+            <span class="fw-lighter text-dark-emphasis">
+              created
+              <relative-time datetime="{{ .PublishDate.Format " Mon, 02 Jan 2006 15:04:05 -0700" }}" 
+                title="{{ .PublishDate.Format " Mon, 02 Jan 2006 15:04:05 -0700" }}">
+                {{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}
+              </relative-time>
+            </span>
+            <span class="ps-2" >
+              {{ with .Params.tags }}
+                {{ range $tag := (first 5 .) }}
+                  <a class="badge text-bg-secondary text-dark fw-normal bg-opacity-25 pb-1 link-underline link-underline-opacity-0 link-underline-opacity-100-hover" href="{{ relURL (print "tags/" $tag) }}/"> {{$tag}}</a>
+                {{ end }}
               {{ end }}
-            {{ end }}
-          </p>
+            </span>
+          </div>
+
+          
         </div>
       </li>
     {{ end }}
