@@ -1,6 +1,6 @@
 {{ define "post" }}
 <div class="d-flex flex-column border rounded mt-4 mt-md-0">
-  <div class="border-bottom bg-light ">
+  <div class="border-bottom bg-light markdown-sticky-top">
     <div class="d-flex flex-row align-items-center">
       <div class="btn-group" role="group">
         <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,7 +26,7 @@
   </div>
   <div class="pt-4 px-2 pb-3">
     <article class="markdown-body container-lg">
-      {{- .Content -}}
+      {{- partial "anchors.html" .Content -}}
     </article>
   </div>
 </div>
