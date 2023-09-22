@@ -5,18 +5,24 @@
     --color-markdown-table-tr-border: #c6cbd1;
 }
 
+path { fill: var(--bs-tertiary-color) }
 
 .dropdown-item:active {
     background: transparent;
 }
 
+.fs-7 {
+    font-size: 0.85rem; 
+}
+
 @supports ((position: -webkit-sticky) or (position: sticky)) {
-    .markdown-sticky-top {
+    .markdown-sticky-top3 {
         position: -webkit-sticky;
         position: sticky;
-        top: 43px;
+        top: 51px;
     }
-} 
+}
+
 .markdown-body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     font-size: 16px;

@@ -6,10 +6,10 @@
 
 <div class="container-xl">
   <div class="d-flex flex-sm-row flex-column">
-    <div class="p-2 col-sm-3">
+    <div class="p-2 pt-0 col-sm-3">
       <div class="d-flex flex-column sticky-top ">
         <div class="d-flex flex-sm-column ">
-          <div class="pt-3 pt-md-2 pb-2 order-sm-1 order-2 ">
+          <div class="pt-3 pt-md-2 pb-2 order-sm-1 order-2">
             <p class="fs-4 fw-bold p-0 m-0">{{ .Site.Params.author }}</p>
             <p class="fs-5 text-dark-emphasis">{{ .Site.Params.resume }}</p>
           </div>
@@ -17,7 +17,7 @@
           <div class="pt-2 pe-2 col-3 col-sm-12 order-sm-2 order-1">
             {{ with $.Site.Params.avatar }}
               <a href="{{ $.Site.Params.avatar }}">
-                <img class="img-thumbnail rounded-pill border bg-white" src="{{ $.Site.Params.avatar }}">
+                <img width="250" class="img-thumbnail rounded-pill border bg-white" src="{{ $.Site.Params.avatar }}">
               </a>
             {{ end }}
           </div>
@@ -53,8 +53,8 @@
       </div>
     </div>
 
-    <div class="p-2 col-sm-9">
-      <ul class="nav nav-underline sticky-top d-flex mb-md-4 bg-white border-bottom">
+    <div class="p-2 pt-0 col-sm-9">
+      <ul class="nav nav-underline sticky-top d-flex pt-2 mb-md-4 bg-white border-bottom">
         <li class="nav-item px-md-1">
           <a class="nav-link {{ if .IsHome  }} text-dark active {{ else }} text-dark-emphasis {{ end }}" href="{{ .Site.BaseURL }}">
             <svg height="16" viewBox="0 0 16 16" version="1.1" width="16">
