@@ -89,10 +89,10 @@
         </li>
       </ul>
 
-      {{ if or .IsHome (eq .Type "posts") }}
-      {{ block "posts" . }}{{ end }}
-      {{ else if .IsPage }}
+      {{ if .IsPage }}
       {{ block "post" . }}{{ end }}
+      {{ else if or .IsHome (eq .Type "posts") }}
+      {{ block "posts" . }}{{ end }}
       {{ else if eq .Type "pinned"  }}
       {{ block "pinned" . }}{{ end }}
       {{ else if eq .Type "tags"  }}
